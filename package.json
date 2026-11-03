@@ -1,0 +1,9 @@
+{
+  "name": "mistake-notebook-ai",
+  "version": "0.1.0",
+  "description": "Snap a problem you got wrong; Gemini reads it, tags subject and topics, and writes similar practice problems.",
+  "license": "MIT",
+  "type": "commonjs",
+  "engines": { "node": ">=20" },
+  "scripts": { "start": "node server.js", "test": "node --test test/" }
+}

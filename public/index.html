@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mistake Notebook AI · 错题本 AI</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:820px;margin:20px auto;padding:0 14px;color:#1b1b1b;background:#fafafa}
+h1{margin-bottom:2px}.sub{color:#555;margin-top:0}
+section{background:#fff;border:1px solid #ddd;border-radius:10px;padding:14px 16px;margin:14px 0}
+button{padding:7px 14px;border-radius:6px;border:1px solid #2a5bd7;background:#2a5bd7;color:#fff;cursor:pointer}
+button.ghost{background:#fff;color:#2a5bd7}button:disabled{opacity:.5;cursor:wait}
+.err{color:#b00020;font-weight:600}.muted{color:#666;font-size:.9em}
+.tag{display:inline-block;background:#eef2ff;border-radius:12px;padding:2px 9px;margin:2px;font-size:.85em}
+.card{border:1px solid #e3e3e3;border-radius:8px;padding:10px;margin:8px 0;white-space:pre-wrap}
+#preview{max-width:100%;max-height:260px;display:none;margin-top:8px;border:1px solid #ddd}
+textarea{width:100%;min-height:70px;font:inherit}select{padding:5px}
+details summary{cursor:pointer;color:#2a5bd7}
+</style></head><body>
+<h1>Mistake Notebook AI <span class="muted">错题本 AI</span></h1>
+<p class="sub">Snap a problem you got wrong → AI reads it, tags subject &amp; topics, and writes 3 similar practice problems.</p>
+<div id="status" class="muted"></div>
+
+<section>
+  <h3>1. Upload a problem photo</h3>
+  <input type="file" id="file" accept="image/jpeg,image/png,image/webp">
+  <img id="preview" alt="preview">
+  <p><button id="analyze" disabled>Analyze</button> <span id="busy" class="muted"></span></p>
+  <p id="error" class="err"></p>
+</section>
+
+<section id="result" hidden>
+  <h3>2. Result</h3>
+  <div id="meta"></div>
+  <p class="muted">Problem text (edit if the AI misread it, then click “New practice set”):</p>
+  <textarea id="problemText"></textarea>
+  <details><summary>Solution to the original problem</summary><div id="solution" class="card"></div></details>
+  <h4>Practice problems</h4>
+  <div id="practice"></div>
+  <p><button id="more" class="ghost">New practice set</button> <button id="save">Save to notebook</button> <span id="saved" class="muted"></span></p>
+</section>
+
+<section>
+  <h3>3. My notebook</h3>
+  <p>Filter: <select id="fSubject"><option value="">All subjects</option></select>
+  <select id="fTopic"><option value="">All topics</option></select></p>
+  <div id="list" class="muted">Nothing saved yet. Entries are stored only in this browser (localStorage).</div>
+</section>
+<p class="muted">AI-generated content can be wrong. Check answers before relying on them. Photos are sent to Google Gemini for analysis and are not stored by this app.</p>
+<script src="app.js"></script>
+</body></html>
