@@ -30,7 +30,7 @@ function renderPractice(list) {
 }
 function render(d) {
   current = d; $('result').hidden = false; $('saved').textContent = '';
-  $('meta').innerHTML = `<b>Subject:</b> ${esc(d.subject)} &nbsp; <b>Difficulty:</b> ${'★'.repeat(d.difficulty)}${'☆'.repeat(5 - d.difficulty)} &nbsp; <b>AI confidence:</b> ${esc(d.confidence)}<br>` +
+  $('meta').innerHTML = `<b>Subject:</b> ${esc(d.subject)} &nbsp; <b>Difficulty:</b> <span title="${esc(d.difficultyReason || '')}">${'★'.repeat(d.difficulty)}${'☆'.repeat(5 - d.difficulty)}</span> &nbsp; <b>AI confidence:</b> ${esc(d.confidence)}<br>` +
     d.topics.map((t) => `<span class="tag">${esc(t)}</span>`).join('') + `<br><span class="muted">model: ${esc(d.model)}</span>` +
     (d.confidence === 'low' ? '<p class="err">Low confidence: please check the problem text below.</p>' : '');
   $('problemText').value = d.problemText; $('solution').textContent = d.solution; renderPractice(d.practice);
