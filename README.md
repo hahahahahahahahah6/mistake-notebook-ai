@@ -18,6 +18,26 @@ the first commit is dated 2026-11-02.
 5. **My notebook:** save entries, filter by subject or topic, delete. Stored only in your browser (`localStorage`); there is no account or server database.
 6. Clear errors: missing API key, unreadable image, rate limit and AI failures are shown as messages. The app never shows mock data.
 
+## Screenshots
+
+Upload page:
+
+![Landing page with photo upload](docs/screenshots/01-home.png)
+
+Analysis result for a sample quadratic equation (subject, topic tags, difficulty stars, AI confidence, editable problem text):
+
+![Analysis result](docs/screenshots/02-result-overview.png)
+
+Hovering the difficulty stars shows the AI's reason for the rating. Example from this run: "This is a routine 2-step exercise involving factoring a quadratic equation and solving for x." (This is a native browser tooltip, so it is not shown in the screenshots.)
+
+Three practice problems, with answers revealed by clicking "Show answer":
+
+![Practice problems with answers expanded](docs/screenshots/04-practice.png)
+
+Entry saved to the notebook (stored only in this browser):
+
+![Saved notebook entry](docs/screenshots/05-notebook.png)
+
 ## How it works
 - `server.js`: tiny Node.js HTTP server (no npm dependencies). Endpoints: `GET /api/status`, `POST /api/analyze`, `POST /api/practice`.
 - `lib/gemini.js`: Gemini REST client with structured JSON output (`responseJsonSchema`), retry with backoff on 429/500/503, and model fallback (`GEMINI_MODEL`, then `GEMINI_FALLBACK_MODELS`). The model that answered is shown in the UI.
