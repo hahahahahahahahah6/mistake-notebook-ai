@@ -92,3 +92,9 @@ test('analysis uses low temperature and practice requests vary', async () => {
   assert.ok(bodies[0].generationConfig.temperature <= 0.3);
   assert.ok(bodies[0].generationConfig.responseJsonSchema.required.includes('difficultyReason'));
 });
+
+test('cleanPractice drops questions with leaked drafting text', () => {
+  const r = nb.cleanPractice([{ question: 'Find x. Wait, let\'s make it simpler: x(2x - 7) = 30. That leads to 2x^2 - 7x - 30 = 0.', answer: '6' },
+    { question: 'A train accelerates from rest to 20 m/s over 50 m. Find its acceleration.', answer: '4 m/s^2' }], 'Solve 2x^2-7x+3=0');
+  assert.deepEqual(r.map((p) => p.answer), ['4 m/s^2']);
+});
