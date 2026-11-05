@@ -50,7 +50,7 @@ Entry saved to the notebook (stored only in this browser):
 Requires Node.js 20+.
 ```bash
 cp .env.example .env      # then put your own key in GEMINI_API_KEY
-npm test                  # 9 unit tests, mocked HTTP (no real API calls)
+npm test                  # 14 unit tests, mocked HTTP (no real API calls)
 npm start                 # http://localhost:3000
 ```
 Get a Gemini API key at [Google AI Studio](https://aistudio.google.com/apikey). Keys are read only from environment variables or `.env` (git-ignored) and are never logged.
